@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../css/FormularioLogin.css';
 
 const FormularioLogin = ({ onLogin }) => {
     const [usuario, setUsuario] = useState('');
@@ -12,7 +13,7 @@ const FormularioLogin = ({ onLogin }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} data-testid="form-login">
+        <form onSubmit={handleSubmit} className="form-login">
             <div>
                 <label htmlFor="usuario">Usuario:</label>
                 <input
@@ -21,7 +22,6 @@ const FormularioLogin = ({ onLogin }) => {
                     type="text"
                     value={usuario}
                     onChange={e => setUsuario(e.target.value)}
-                    data-testid="input-usuario"
                 />
             </div>
             <div>
@@ -32,13 +32,13 @@ const FormularioLogin = ({ onLogin }) => {
                     type="password"
                     value={contrasena}
                     onChange={e => setContrasena(e.target.value)}
-                    data-testid="input-contrasena"
                 />
             </div>
             <button
                 type="submit"
-                data-testid="btn-login"
+                className="btn-login"
                 disabled={!usuario || !contrasena}
+                title={!usuario || !contrasena ? "Por favor, ingrese ambos campos" : ""}
             >
                 Login
             </button>
